@@ -1,9 +1,9 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 const config = require("./config.json")
-const jimp = require('jimp')
-
+const jimp = require("jimp")
 const regex = /(([0-9]+)(\s)(\D+)(\(\w+\))(\s)(\d+))/gm
+const scryfall = require("scryfall-client")
 
 
 function sendText() {
@@ -12,6 +12,17 @@ function sendText() {
 
 function sendFile() {
   return 
+}
+
+function getCardImage(cardname) {
+  const card = scryfall.get("cards/named", {
+    exact: "windfall",
+  })
+  .then(function (card) {
+    const img = card.getImage()
+    return img // set an img tag's src to this
+  });
+
 }
 
 function applyRegex(message){
@@ -30,11 +41,8 @@ function applyRegex(message){
       }
     });
   }
-
   return count + " detected cards!"
 }
-
-
 
 client.on("ready", () => {
   console.log("Bot is ready!")
@@ -49,10 +57,14 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const comando = args.shift().toLowerCase()
   if(comando === "visual") {
-    await message.channel.send(applyRegex(message.content))
-    //await message.channel.send(sendText(), {files: ["./files/background.jpg"]})
+    var newmessage = message.content.substring(8)
+    console.log(newmessage)
+    ///await message.channel.send(applyRegex(message.content))
+    ///var imagem = getCardImage(newmessage)
+    ///var imagem = new Image(100, 200)
+    ///imagem.src = "./files/background.jpg"
+    await message.channel.send(sendText(), { files: ["./files/background.jpg"]})
   }
-  
 });
 
 

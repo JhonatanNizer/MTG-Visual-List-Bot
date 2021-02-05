@@ -15,6 +15,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "jimp": "^0.16.1"
+    "jimp": "^0.16.1",
+    "scryfall-client": "^0.18.6"
   }
 }
