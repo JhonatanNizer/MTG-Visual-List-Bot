@@ -2,17 +2,10 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 const config = require("./config.json")
 const jimp = require("jimp")
-const regex = /(([0-9]+)(\s)(\D+)(\(\w+\))(\s)(\d+))/gm
 const scryfall = require("scryfall-client")
 
+const regex = /(([0-9]+)(\s)(\D+)(\(\w+\))(\s)(\d+))/gm
 
-function sendText() {
-  return "Here is your list!"
-}
-
-function sendFile() {
-  return 
-}
 
 function getCardImage(cardname) {
   const card = scryfall.get("cards/named", {
@@ -22,7 +15,6 @@ function getCardImage(cardname) {
     const img = card.getImage()
     return img // set an img tag's src to this
   });
-
 }
 
 function applyRegex(message){
@@ -57,13 +49,14 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const comando = args.shift().toLowerCase()
   if(comando === "visual") {
-    var newmessage = message.content.substring(8)
+    var newmessage = message.content.substring(7)
     console.log(newmessage)
     ///await message.channel.send(applyRegex(message.content))
-    ///var imagem = getCardImage(newmessage)
-    ///var imagem = new Image(100, 200)
-    ///imagem.src = "./files/background.jpg"
-    await message.channel.send(sendText(), { files: ["./files/background.jpg"]})
+    let imagem = getCardImage(newmessage)
+    console.log(imagem.cardname)
+    await message.channel.send("Here is your list!", { files: ["./files/background.jpg"]})
+    //await message.channel.send("Here is your list!", { files: [imagem]})
+
   }
 });
 

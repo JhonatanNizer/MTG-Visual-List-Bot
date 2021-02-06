@@ -8,6 +8,3 @@ const card = scryfall
   const img = card.getImage();
   img; // set an img tag's src to this
 });
-
-
-console.log(card)
