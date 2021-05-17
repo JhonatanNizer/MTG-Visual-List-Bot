@@ -10,10 +10,10 @@ public class CommandListener extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split(" ");
         String message = event.getMessage().getContentRaw();
-        if(args[0].equalsIgnoreCase(prefix)){
+        if(message.startsWith(prefix)){
             Regex regex = new Regex();
             regex.applyRegex(message);
-            //event.getChannel().sendMessage("Here is your list!").queue();
+            event.getChannel().sendMessage("Here is your list!").queue();
         }
     }
     

@@ -13,7 +13,6 @@ public class App {
     public static void main(String[] args) throws LoginException, InterruptedException, FileNotFoundException {
         JDA jda;
         jda = JDABuilder.createDefault(GetToken())
-                .setActivity(Activity.listening("o marcelo dar o rabo"))
                 .build();
         jda.addEventListener(new CommandListener());
     }
