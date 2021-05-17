@@ -3,6 +3,7 @@ package com.jnizer.mtgvisuallist;
 import java.util.List;
 
 public class Deck {
+
     private Card companion;
     private Card commander;
     private List<Card> mainDeck;
@@ -39,5 +40,5 @@ public class Deck {
     public void setSideBoard(List<Card> sideBoard) {
         this.sideBoard = sideBoard;
     }
-    
+
 }

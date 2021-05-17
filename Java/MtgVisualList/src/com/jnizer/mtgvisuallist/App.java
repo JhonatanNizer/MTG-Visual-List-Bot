@@ -16,7 +16,7 @@ public class App {
                 .build();
         jda.addEventListener(new CommandListener());
     }
-    
+
     private static String GetToken() throws FileNotFoundException {
         String path = "C:\\Users\\Nizer\\Documents\\GitHub\\MTG VisualList Bot\\MTG-Visual-List-Bot\\Java\\MtgVisualList\\src\\com\\jnizer\\mtgvisuallist\\token.txt";
         File file = new File(path);
@@ -24,5 +24,5 @@ public class App {
         String token = scanner.nextLine();
         return token;
     }
-    
+
 }

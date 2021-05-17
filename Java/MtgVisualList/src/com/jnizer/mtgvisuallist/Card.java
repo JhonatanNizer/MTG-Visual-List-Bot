@@ -3,6 +3,7 @@ package com.jnizer.mtgvisuallist;
 import java.awt.Image;
 
 public class Card {
+
     private int quantity;
     private String name;
     private String block;
