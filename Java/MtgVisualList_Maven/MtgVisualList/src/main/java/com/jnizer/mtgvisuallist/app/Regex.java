@@ -40,6 +40,6 @@ public class Regex {
         Deck deck = new Deck();
         deck.setMainDeck(cardList);
         return deck;
-    }
+    } 
 
 }

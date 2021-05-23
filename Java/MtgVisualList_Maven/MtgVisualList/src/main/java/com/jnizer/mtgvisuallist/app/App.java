@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.JDABuilder;
 public class App {
 
     public static void main(String[] args) throws LoginException, InterruptedException, FileNotFoundException, IOException {
-        ImageManager.GetCardImage();
+        //ImageManager.getCardImage();
         JDA jda;
         jda = JDABuilder.createDefault(GetToken()).build();
         jda.addEventListener(new CommandListener());
