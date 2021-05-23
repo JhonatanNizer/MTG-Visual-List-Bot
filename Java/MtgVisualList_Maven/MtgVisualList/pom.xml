@@ -11,6 +11,16 @@
             <artifactId>JDA</artifactId>
             <version>4.2.1_265</version>
         </dependency>
+        <dependency>
+            <groupId>io.magicthegathering</groupId>
+            <artifactId>javasdk</artifactId>
+            <version>0.0.18</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.forohforerror</groupId>
+            <artifactId>ScryfallAPIBinding</artifactId>
+            <version>1.11.1</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

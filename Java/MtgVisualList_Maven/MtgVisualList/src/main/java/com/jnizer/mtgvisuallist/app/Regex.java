@@ -1,5 +1,7 @@
 package com.jnizer.mtgvisuallist.app;
 
+import com.jnizer.mtgvisuallist.resource.Deck;
+import com.jnizer.mtgvisuallist.resource.Card;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

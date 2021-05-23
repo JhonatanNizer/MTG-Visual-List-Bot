@@ -6,3 +6,5 @@
 Java/MtgVisualList/src/com/jnizer/mtgvisuallist/token.txt
 /Java/MtgVisualList_Maven/MtgVisualList/target/
 Java/MtgVisualList_Maven/MtgVisualList/src/main/java/com/jnizer/mtgvisuallist/app/token.txt
+*.jpg
+*.txt
