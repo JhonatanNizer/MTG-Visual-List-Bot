@@ -4,8 +4,6 @@ import java.io.File;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-
-
 public class CommandListener extends ListenerAdapter {
 
     final protected String prefix = "!visual";
@@ -17,7 +15,9 @@ public class CommandListener extends ListenerAdapter {
         if (message.startsWith(prefix)) {
             Regex regex = new Regex();
             regex.createDeckFromRegex(message);
-            event.getChannel().sendMessage("Here is your list!").queue();
+            event.getChannel()
+                    .sendMessage("Here is your list!")
+                    .queue();
         }
     }
 
