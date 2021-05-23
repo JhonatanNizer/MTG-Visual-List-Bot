@@ -1,4 +1,4 @@
-package com.jnizer.mtgvisuallist;
+package com.jnizer.mtgvisuallist.app;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,7 +6,6 @@ import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Activity;
 
 public class App {
 
@@ -18,7 +17,7 @@ public class App {
     }
 
     private static String GetToken() throws FileNotFoundException {
-        String path = "C:\\Users\\Nizer\\Documents\\GitHub\\MTG VisualList Bot\\MTG-Visual-List-Bot\\Java\\MtgVisualList\\src\\com\\jnizer\\mtgvisuallist\\token.txt";
+        String path = "C:\\Users\\Nizer\\Documents\\GitHub\\MTG VisualList Bot\\MTG-Visual-List-Bot\\Java\\MtgVisualList\\src\\com\\jnizer\\mtgvisuallist\\app\\token.txt";
         File file = new File(path);
         Scanner scanner = new Scanner(file);
         String token = scanner.nextLine();

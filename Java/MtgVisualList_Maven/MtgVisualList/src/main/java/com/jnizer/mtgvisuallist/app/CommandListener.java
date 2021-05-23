@@ -1,7 +1,10 @@
-package com.jnizer.mtgvisuallist;
+package com.jnizer.mtgvisuallist.app;
 
+import java.io.File;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
+
 
 public class CommandListener extends ListenerAdapter {
 
@@ -13,7 +16,7 @@ public class CommandListener extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
         if (message.startsWith(prefix)) {
             Regex regex = new Regex();
-            regex.applyRegex(message);
+            regex.createDeckFromRegex(message);
             event.getChannel().sendMessage("Here is your list!").queue();
         }
     }

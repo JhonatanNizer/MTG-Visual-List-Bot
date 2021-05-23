@@ -1,4 +1,4 @@
-package com.jnizer.mtgvisuallist;
+package com.jnizer.mtgvisuallist.app;
 
 import java.util.List;
 
