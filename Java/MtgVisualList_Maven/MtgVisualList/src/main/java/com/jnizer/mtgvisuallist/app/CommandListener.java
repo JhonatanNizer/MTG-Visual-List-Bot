@@ -18,11 +18,17 @@ public class CommandListener extends ListenerAdapter {
         String message = rawMessage.substring(prefix.length());
         if (rawMessage.startsWith(prefix)) {
             Regex regex = new Regex();
-            //regex.createDeckFromRegex(message);
+            try {
+                //regex.createDeckFromRegex(message);
                 event.getChannel()
-                        .sendMessage("Toma sua carta:")
+                        .sendMessage("Here is your card:")
                         .addFile(ImageManager.getCardImage(message))
                         .queue();
+            } catch (IOException ex) {
+                event.getChannel()
+                        .sendMessage("RIP Card")
+                        .queue();
+            }
             
         }
     }

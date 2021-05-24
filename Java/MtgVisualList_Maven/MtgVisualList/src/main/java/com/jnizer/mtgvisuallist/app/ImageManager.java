@@ -16,18 +16,15 @@ import org.json.simple.JSONObject;
 
 public class ImageManager {
     
-    public static File getCardImage(String cardName) {
+    public static File getCardImage(String cardName) throws IOException {
         var query = MTGCardQuery.search(cardName);
         Card card = query.get(0);
         JSONObject json = (JSONObject) card.getJSONData().get("image_uris");
         String uri = (String) json.get("normal");
         String imageUrl = uri;
         String destinationFile = "images-api\\image.jpg";
-        try {
-            saveImage(imageUrl, destinationFile);
-        } catch (IOException ex) {
-            Logger.getLogger(ImageManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        saveImage(imageUrl, destinationFile);
+
         
         String path = "C:\\Users\\Nizer\\Documents\\GitHub\\MTG VisualList Bot\\MTG-Visual-List-Bot\\Java\\MtgVisualList_Maven\\MtgVisualList\\images-api\\image.jpg";
         File file = new File(path);
