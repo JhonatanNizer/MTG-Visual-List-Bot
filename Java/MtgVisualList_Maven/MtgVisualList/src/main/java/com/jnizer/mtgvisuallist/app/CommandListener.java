@@ -13,23 +13,17 @@ public class CommandListener extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        //String[] args = event.getMessage().getContentRaw().split(" ");
         String rawMessage = event.getMessage().getContentRaw();
         String message = rawMessage.substring(prefix.length());
         if (rawMessage.startsWith(prefix)) {
-            Regex regex = new Regex();
             try {
+                //Regex regex = new Regex();
                 //regex.createDeckFromRegex(message);
-                event.getChannel()
-                        .sendMessage("Here is your card:")
-                        .addFile(ImageManager.getCardImage(message))
-                        .queue();
+                event.getChannel().sendTyping().queue();
+                event.getChannel().sendMessage("Here is your card:").addFile(ImageManager.getCardImage(message)).queue();
             } catch (IOException ex) {
-                event.getChannel()
-                        .sendMessage("RIP Card")
-                        .queue();
-            }
-            
+                Logger.getLogger(CommandListener.class.getName()).log(Level.SEVERE, null, ex);
+            }            
         }
     }
 

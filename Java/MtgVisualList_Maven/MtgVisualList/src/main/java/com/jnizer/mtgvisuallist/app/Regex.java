@@ -13,33 +13,37 @@ public class Regex {
     final protected Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 
     public Deck createDeckFromRegex(String message) {
-        List<Card> cardList = new ArrayList<Card>();
-        final Matcher matcher = pattern.matcher(message);
-        while (matcher.find()) {
-            Card card = new Card();
-            for (int i = 1; i <= matcher.groupCount(); i++) {
-                switch(i) {
-                    case 2:
-                        card.setQuantity(Integer.parseInt(matcher.group(i)));
-                        break;
-                    case 4: 
-                        card.setName(String.format(matcher.group(i)));
-                        break;
-                    case 5:
-                        card.setBlock(String.format(matcher.group(i)));
-                        break;
-                    case 7:
-                        card.setCode(Integer.parseInt(matcher.group(i)));
-                        break;
+        try {
+            List<Card> cardList = new ArrayList<Card>();
+            final Matcher matcher = pattern.matcher(message);
+            while (matcher.find()) {
+                Card card = new Card();
+                for (int i = 1; i <= matcher.groupCount(); i++) {
+                    switch(i) {
+                        case 2:
+                            card.setQuantity(Integer.parseInt(matcher.group(i)));
+                            break;
+                        case 4: 
+                            card.setName(String.format(matcher.group(i)));
+                            break;
+                        case 5:
+                            card.setBlock(String.format(matcher.group(i)));
+                            break;
+                        case 7:
+                            card.setCode(Integer.parseInt(matcher.group(i)));
+                            break;
+                    }
+                    cardList.add(card);
+                    System.out.println("Group " + i + ": " + matcher.group(i));
                 }
-                cardList.add(card);
-                System.out.println("Group " + i + ": " + matcher.group(i));
+                System.out.println("");
             }
-            System.out.println("");
+            Deck deck = new Deck();
+            deck.setMainDeck(cardList);
+            return deck;
+        } catch(Exception ex) {
+            return null;
         }
-        Deck deck = new Deck();
-        deck.setMainDeck(cardList);
-        return deck;
     } 
-
+    
 }
