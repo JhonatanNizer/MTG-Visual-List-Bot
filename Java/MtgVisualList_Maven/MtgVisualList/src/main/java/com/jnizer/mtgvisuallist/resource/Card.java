@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.util.List;
 
 public class Card {
-
+    
     private int quantity;
     private String name;
     private String block;
@@ -14,6 +14,14 @@ public class Card {
     private List<ManaCost> manacost;
     private Card flip;
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
     public String getType() {
         return type;
     }
@@ -36,14 +44,6 @@ public class Card {
 
     public void setFlip(Card flip) {
         this.flip = flip;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getName() {

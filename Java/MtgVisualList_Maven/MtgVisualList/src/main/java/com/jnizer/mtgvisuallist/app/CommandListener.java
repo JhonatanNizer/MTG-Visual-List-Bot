@@ -1,9 +1,7 @@
 package com.jnizer.mtgvisuallist.app;
 
-import java.io.File;
+import com.jnizer.mtgvisuallist.resource.Deck;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -17,12 +15,14 @@ public class CommandListener extends ListenerAdapter {
         String message = rawMessage.substring(prefix.length());
         if (rawMessage.startsWith(prefix)) {
             try {
-                //Regex regex = new Regex();
-                //regex.createDeckFromRegex(message);
-                event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage("Here is your card:").addFile(ImageManager.getCardImage(message)).queue();
+                DeckBiulder deckBiulder = new DeckBiulder();
+                Deck deck = deckBiulder.biuldDeckFromMessage(message);
+                
+                if (deck == null || deck.getMainDeck().size() < 60) { throw new IOException(); }
+                //event.getChannel().sendTyping().queue();
+                //event.getChannel().sendMessage("Here is your card:").addFile(ImageManager.getCardImage(message)).queue();
             } catch (IOException ex) {
-                Logger.getLogger(CommandListener.class.getName()).log(Level.SEVERE, null, ex);
+                event.getChannel().sendMessage("Error loading visual list").queue();
             }            
         }
     }
