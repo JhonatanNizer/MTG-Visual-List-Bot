@@ -8,6 +8,34 @@ public class Deck {
     private Card commander;
     private List<Card> mainDeck;
     private List<Card> sideBoard;
+    private boolean hasCompanion;
+    private boolean hasSideBoard;
+    private boolean hasCommander;
+
+    public boolean HasCompanion() {
+        return hasCompanion;
+    }
+
+    public void setHasCompanion(boolean hasCompanion) {
+        this.hasCompanion = hasCompanion;
+    }
+
+    public boolean HasSideBoard() {
+        return hasSideBoard;
+    }
+
+    public void setHasSideBoard(boolean hasSideBoard) {
+        this.hasSideBoard = hasSideBoard;
+    }
+
+    public boolean HasCommander() {
+        return hasCommander;
+    }
+
+    public void setHasCommander(boolean hasCommander) {
+        this.hasCommander = hasCommander;
+    }
+    
 
     public Card getCompanion() {
         return companion;
