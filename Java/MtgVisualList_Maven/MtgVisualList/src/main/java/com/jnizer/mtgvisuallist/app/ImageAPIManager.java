@@ -1,5 +1,6 @@
 package com.jnizer.mtgvisuallist.app;
 
+import com.jnizer.mtgvisuallist.resource.Deck;
 import forohfor.scryfall.api.Card;
 import java.io.File;
 import forohfor.scryfall.api.MTGCardQuery;
@@ -10,11 +11,26 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.simple.JSONObject;
 
-public class ImageManager {
+public class ImageAPIManager {
+    
+    public static Deck setDeckImages(Deck deck) {
+        try{
+            List<String> cardNames = new ArrayList<>();
+            for (com.jnizer.mtgvisuallist.resource.Card card : deck.getMainDeck()) {
+                cardNames.add(card.getName());
+            }
+            
+            var queryArrayCards = MTGCardQuery.toCardList(cardNames, false);
+            
+            return deck;
+        } catch(Exception ex){
+            return null;
+        }
+    }
     
     public static File getCardImage(String cardName) throws IOException {
         var queryArrayCards = MTGCardQuery.search(cardName);
@@ -26,13 +42,13 @@ public class ImageManager {
         for (Card c : queryArrayCards) {
             cardEscrito = cardName.toLowerCase();
             cardBaixado = c.getName().toLowerCase();
-            
             if(cardEscrito.contains(cardBaixado)) {
                 card = queryArrayCards.get(i);
                 break;
             }
             i++;
         }
+
         
         //Card card = queryArrayCards.get(0);
         JSONObject json = (JSONObject) card.getJSONData().get("image_uris");
@@ -40,11 +56,11 @@ public class ImageManager {
         String imageUrl = uri;
         String destinationFile = "images-api\\image.jpg";
         saveImage(imageUrl, destinationFile);
+        
         String path = "C:\\Users\\Nizer\\Documents\\GitHub\\MTG VisualList Bot\\MTG-Visual-List-Bot\\Java\\MtgVisualList_Maven\\MtgVisualList\\images-api\\image.jpg";
         File file = new File(path);
         return file;
     }
-    
     public static void saveImage(String imageUrl, String destinationFile) throws IOException {
         URL url = new URL(imageUrl);
         InputStream is = url.openStream();

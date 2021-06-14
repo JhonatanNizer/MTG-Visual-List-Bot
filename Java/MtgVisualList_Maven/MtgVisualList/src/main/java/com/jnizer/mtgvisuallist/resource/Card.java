@@ -1,6 +1,6 @@
 package com.jnizer.mtgvisuallist.resource;
 
-import java.awt.Image;
+import java.io.File;
 import java.util.List;
 
 public class Card {
@@ -9,7 +9,7 @@ public class Card {
     private String name;
     private String block;
     private int code;
-    private Image image;
+    private File image;
     private String type;
     private List<ManaCost> manacost;
     private Card flip;
@@ -70,11 +70,11 @@ public class Card {
         this.code = code;
     }
 
-    public Image getImage() {
+    public File getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(File image) {
         this.image = image;
     }
 

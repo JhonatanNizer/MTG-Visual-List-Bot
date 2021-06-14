@@ -16,13 +16,14 @@ public class CommandListener extends ListenerAdapter {
         String message = rawMessage.substring(prefix.length());
         if (rawMessage.startsWith(prefix)) {
             try {
-                //DeckBiulder deckBiulder = new DeckBiulder();
-                //Deck deck = deckBiulder.biuldDeckFromMessage(message);
-                //if (deck == null) { throw new IOException(); }
+                DeckBiulder deckBiulder = new DeckBiulder();
+                Deck deck = deckBiulder.biuldDeckFromMessage(message);
+                if (deck == null) { throw new IOException(); }
                 
+                deck = ImageAPIManager.setDeckImages(deck);
                 
                 event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage("Here is your card: ").addFile(ImageManager.getCardImage(message)).queue();
+                event.getChannel().sendMessage("Here is your card: ").addFile(ImageAPIManager.getCardImage(message)).queue();
             } catch (IOException ex) {
                 event.getChannel().sendMessage("Error loading visual list").queue();
             }            

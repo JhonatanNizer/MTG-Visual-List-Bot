@@ -21,7 +21,6 @@ public class DeckBiulder {
             return null;
         }
     }
-    
     protected Deck initializeDeck(String[] splittedMsg) throws Exception {
         Deck deck = new Deck();
         switch (splittedMsg.length) {
@@ -63,6 +62,7 @@ public class DeckBiulder {
                     deck.setMainDeck(getMaindeckFromMessage(splittedMsg[1]));
                     deck.setSideBoard(getSideboardFromMessage(splittedMsg[2]));
                 }
+                break;
             }
             default -> {
                 throw new Exception("ERROR: Deck cannot be null");
