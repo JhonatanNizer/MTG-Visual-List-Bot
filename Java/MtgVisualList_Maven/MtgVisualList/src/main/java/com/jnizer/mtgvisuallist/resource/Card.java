@@ -2,6 +2,7 @@ package com.jnizer.mtgvisuallist.resource;
 
 import java.io.File;
 import java.util.List;
+import org.json.simple.JSONObject;
 
 public class Card {
     
@@ -9,11 +10,29 @@ public class Card {
     private String name;
     private String block;
     private int code;
+    private String imageUri;    
     private File image;
     private String type;
     private List<ManaCost> manacost;
     private Card flip;
+    private JSONObject json;
 
+    public JSONObject getJson() {
+        return json;
+    }
+
+    public void setJson(JSONObject json) {
+        this.json = json;
+    }
+    
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+    
     public int getQuantity() {
         return quantity;
     }

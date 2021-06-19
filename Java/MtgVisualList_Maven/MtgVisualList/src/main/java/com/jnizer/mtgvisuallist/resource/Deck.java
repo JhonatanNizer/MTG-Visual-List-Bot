@@ -11,7 +11,7 @@ public class Deck {
     private boolean hasCompanion;
     private boolean hasSideBoard;
     private boolean hasCommander;
-
+    
     public boolean HasCompanion() {
         return hasCompanion;
     }

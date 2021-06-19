@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 
 public class App {
-
+    //TODO: 
     public static void main(String[] args) throws LoginException {
         String botToken = FileManager.getBotToken();
         JDA jda;

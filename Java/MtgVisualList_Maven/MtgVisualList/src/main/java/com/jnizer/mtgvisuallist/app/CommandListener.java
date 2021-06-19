@@ -16,14 +16,13 @@ public class CommandListener extends ListenerAdapter {
         String message = rawMessage.substring(prefix.length());
         if (rawMessage.startsWith(prefix)) {
             try {
+                event.getChannel().sendTyping().queue();
                 DeckBiulder deckBiulder = new DeckBiulder();
                 Deck deck = deckBiulder.biuldDeckFromMessage(message);
                 if (deck == null) { throw new IOException(); }
-                
-                deck = ImageAPIManager.setDeckImages(deck);
-                
-                event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage("Here is your card: ").addFile(ImageAPIManager.getCardImage(message)).queue();
+                deck = ImageManager.setDeckImages(deck);
+                MessageSender messageSender = new MessageSender();
+                messageSender.SendMessage(event, deck);
             } catch (IOException ex) {
                 event.getChannel().sendMessage("Error loading visual list").queue();
             }            
@@ -55,5 +54,4 @@ public class CommandListener extends ListenerAdapter {
         mensagemParaEnvio = commander + companion + maindeck + sideboard;
         return mensagemParaEnvio;
     }
-
 }

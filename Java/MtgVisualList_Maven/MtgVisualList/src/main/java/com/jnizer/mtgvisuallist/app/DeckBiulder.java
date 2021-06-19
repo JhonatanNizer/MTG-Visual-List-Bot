@@ -21,6 +21,7 @@ public class DeckBiulder {
             return null;
         }
     }
+    
     protected Deck initializeDeck(String[] splittedMsg) throws Exception {
         Deck deck = new Deck();
         switch (splittedMsg.length) {
@@ -37,13 +38,21 @@ public class DeckBiulder {
                     deck.setHasCommander(true);
                     deck.setHasCompanion(false);
                     deck.setCommander(getCommanderFromMessage(splittedMsg[0]));
-                } else {
+                    deck.setHasSideBoard(false);
+                    deck.setMainDeck(getMaindeckFromMessage(splittedMsg[1]));
+                } else if(splittedMsg[0].contains(("Companion"))) {
                     deck.setHasCommander(false);
                     deck.setHasCompanion(true);
                     deck.setCompanion(getCompanionFromMessage(splittedMsg[0]));
+                    deck.setHasSideBoard(false);
+                    deck.setMainDeck(getMaindeckFromMessage(splittedMsg[1]));
+                } else  {
+                    deck.setHasCommander(false);
+                    deck.setHasCompanion(false);
+                    deck.setHasSideBoard(true);
+                    deck.setMainDeck(getMaindeckFromMessage(splittedMsg[0]));
+                    deck.setSideBoard(getSideboardFromMessage(splittedMsg[1]));
                 }
-                deck.setHasSideBoard(false);
-                deck.setMainDeck(getMaindeckFromMessage(splittedMsg[1]));
                 break;
             }
             case 3 -> {
