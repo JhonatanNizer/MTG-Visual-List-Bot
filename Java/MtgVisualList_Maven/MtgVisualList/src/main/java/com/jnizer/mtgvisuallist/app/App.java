@@ -9,8 +9,7 @@ public class App {
     //TODO: 
     public static void main(String[] args) throws LoginException {
         String botToken = FileManager.getBotToken();
-        JDA jda;
-        jda = JDABuilder.createDefault(botToken).build();
+        JDA jda = JDABuilder.createDefault(botToken).build();
         jda.getPresence().setActivity(Activity.playing("Kassinããão"));
         jda.addEventListener(new CommandListener());
     }

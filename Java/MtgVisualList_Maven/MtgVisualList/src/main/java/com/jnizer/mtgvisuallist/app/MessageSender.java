@@ -9,7 +9,7 @@ public class MessageSender {
     public void SendMessage(GuildMessageReceivedEvent event, Deck deck) throws IOException { 
         event.getChannel()
                 .sendMessage("Here is your list: ")
-                .addFile(ImageManager.biuldImageToSend(deck))
+                .addFile(ImageManager.htmlToImage(deck))
                 .queue();
     }
     

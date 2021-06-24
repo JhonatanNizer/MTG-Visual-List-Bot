@@ -4,6 +4,7 @@ import com.jnizer.mtgvisuallist.resource.Deck;
 import forohfor.scryfall.api.Card;
 import java.io.File;
 import forohfor.scryfall.api.MTGCardQuery;
+import gui.ava.html.image.generator.HtmlImageGenerator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -34,7 +35,6 @@ public class ImageManager {
                 });
             }
             ArrayList<Card> cardsJSON = MTGCardQuery.toCardList(cardNames, false);
-            
             deck.getMainDeck().forEach(card -> {
                 for (int j = 0; j < cardsJSON.size(); j++) {
                    if(card.getName().trim().equals(cardsJSON.get(j).getName().trim())) {
@@ -51,7 +51,7 @@ public class ImageManager {
             return null;
         }
     }
-    public static File biuldImageToSend(Deck deck) throws IOException {
+    public static File drawImageToSend(Deck deck) throws IOException {
         int width = 300;
         int height = 600;
  
@@ -104,7 +104,24 @@ public class ImageManager {
         return file;
     }
     
+    private static String createHTML(Deck deck) {
+        String html = 
+            "<body>\n" +
+                "<h1>My First Heading</h1>\n" +
+                "<p>My first paragraph.</p>\n" +
+            "</body>";
+        return html;
+    }
+    public static File htmlToImage(Deck deck) {
+        HtmlImageGenerator hig = new HtmlImageGenerator();
+        hig.loadHtml(createHTML(deck));
+        String path = "images-api\\test.png";
+        hig.saveAsImage(new File(path));
+        File file = new File(path);
+        return file;
+    }
     public static File getCardImage(String cardName) throws IOException {
+        cardName = "Negate";
         var queryArrayCards = MTGCardQuery.search(cardName);
         Card card = null;
         int i = 0;
@@ -125,7 +142,7 @@ public class ImageManager {
         String imageUrl = uri;
         String destinationFile = "images-api\\image.jpg";
         saveImage(imageUrl, destinationFile);
-        String path = "C:\\Users\\Nizer\\Documents\\GitHub\\MTG VisualList Bot\\MTG-Visual-List-Bot\\Java\\MtgVisualList_Maven\\MtgVisualList\\images-api\\image.jpg";
+        String path = "images-api\\image.jpg";
         File file = new File(path);
         return file;
     }
