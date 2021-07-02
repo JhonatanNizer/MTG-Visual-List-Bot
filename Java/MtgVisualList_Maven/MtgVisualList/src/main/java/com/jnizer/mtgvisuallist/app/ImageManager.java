@@ -103,7 +103,6 @@ public class ImageManager {
   
         return file;
     }
-    
     private static String createHTML(Deck deck) {
         String html = 
             "<body>\n" +
@@ -159,3 +158,25 @@ public class ImageManager {
         os.close();
     } 
 }
+/*
+<!DOCTYPE html>
+<html>
+  <body>
+    <div style="width:1000px">
+      <div style="width:200px">
+          <img width="300px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+          <img width="300px" style="margin-top:-380px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+          <img width="300px" style="margin-top:-380px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+          <img width="300px" style="margin-top:-380px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+      </div>
+      <div style="width:200px">
+          <img width="300px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+          <img width="300px" style="margin-top:-380px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+          <img width="300px" style="margin-top:-380px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+          <img width="300px" style="margin-top:-380px" src="https://cdn1.mtggoldfish.com/images/h/Brazen-Borrower-ELD-672.jpg">
+      </div>
+    </div>
+  </body>
+</html>
+
+*/
