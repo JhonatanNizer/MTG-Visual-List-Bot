@@ -107,80 +107,48 @@ public class ImageManager {
     }
     private static String createHTML(Deck deck) {
         String html = 
-            "<!DOCTYPE html>\n" +
-            "<html>\n" +
-            "\n" +
-            "<head>\n" +
-            "  <style>\n" +
-            "    #row0col0 {\n" +
-            "      float: left;\n" +
-            "      background: Red;\n" +
-            "      width: 310px;\n" +
-            "      height: 1000px;\n" +
-            "    }\n" +
-            "    #row0col1 {\n" +
-            "      float: left;\n" +
-            "      background: Green;\n" +
-            "      width: 310px;\n" +
-            "      height: 1000px;\n" +
-            "    }\n" +
-            "    #row0col2 {\n" +
-            "      float: left;\n" +
-            "      background: blue;\n" +
-            "      width: 310px;\n" +
-            "      height: 1000px;\n" +
-            "    }\n" +
-            "    #row0col3 {\n" +
-            "      float: left;\n" +
-            "      background: blueviolet;\n" +
-            "      width: 310px;\n" +
-            "      height: 1000px;\n" +
-            "    }\n" +
-            "    #row0col4 {\n" +
-            "      float: left;\n" +
-            "      background: chartreuse;\n" +
-            "      width: 310px;\n" +
-            "      height: 1000px;\n" +
-            "    }\n" +
-            "  </style>\n" +
-            "</head>\n" +
-            "\n" +
-            "<body>\n" +
-            "  <div\" style=\"width: 1000; background-color: black;\">\n" +
-            "    <div id=\"row0col0\">\n" +
-            "      <img width=\"300px\" src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-            "      <img width=\"300px\" style=\"margin-top:-380px\"\n" +
-            "        src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-            "      <img width=\"300px\" style=\"margin-top:-380px\"\n" +
-            "        src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-            "      <img width=\"300px\" style=\"margin-top:-380px\"\n" +
-            "        src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-            "    </div>\n" +
-            "    <div id=\"row0col1\">\n" +
-            "      <img width=\"300px\" src=\"https://cdn1.mtggoldfish.com/images/gf/Brazen%2BBorrower%2B%255BELD%255D.jpg\">\n" +
-            "      <img width=\"300px\" style=\"margin-top:-380px\"\n" +
-            "        src=\"https://cdn1.mtggoldfish.com/images/gf/Brazen%2BBorrower%2B%255BELD%255D.jpg\">\n" +
-            "      <img width=\"300px\" style=\"margin-top:-380px\"\n" +
-            "        src=\"https://cdn1.mtggoldfish.com/images/gf/Brazen%2BBorrower%2B%255BELD%255D.jpg\">\n" +
-            "      <img width=\"300px\" style=\"margin-top:-380px\"\n" +
-            "        src=\"https://cdn1.mtggoldfish.com/images/gf/Brazen%2BBorrower%2B%255BELD%255D.jpg\">\n" +
-            "    </div>\n" +
-            "  </div>\n" +
-            "</body>\n" +
-            "\n" +
-            "</html>";
+"<!DOCTYPE html>\n" +
+"<html>\n" +
+"<body>\n" +
+"  <div>\n" +
+"    <div style=\"background: red; width: 1800px;\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
+"    </div>\n" +
+"  </div>\n" +
+"</body>\n" +
+"</html>";
         return html;
     }
     public static File htmlToImage(Deck deck) {
         HtmlImageGenerator hig = new HtmlImageGenerator();
         hig.loadHtml(createHTML(deck));
+        String path = "images-api\\test.png";
         try {
-            Thread.sleep(10000);
+            hig.saveAsImage(new File(path));
+            Thread.sleep(20000);
         } catch (InterruptedException ex) {
             Logger.getLogger(ImageManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String path = "images-api\\test.png";
-        hig.saveAsImage(new File(path));
         File file = new File(path);
         return file;
     }
