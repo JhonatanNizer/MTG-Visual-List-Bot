@@ -6,7 +6,9 @@ import java.io.File;
 import forohfor.scryfall.api.MTGCardQuery;
 import gui.ava.html.image.generator.HtmlImageGenerator;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -42,7 +45,7 @@ public class ImageManager {
                    if(card.getName().trim().equals(cardsJSON.get(j).getName().trim())) {
                        JSONObject json = (JSONObject) cardsJSON.get(j).getJSONData().get("image_uris");
                        //card.setJson(json);
-                       card.setImageUri((String) json.get("normal"));
+                       card.setImageUri((String) json.get("small"));
                        //System.out.println(card.getImageUri());
                        break;
                    }
@@ -54,102 +57,34 @@ public class ImageManager {
         }
     }
     public static File drawImageToSend(Deck deck) throws IOException {
-        int width = 300;
-        int height = 600;
+        int width = 1200;
+        int height = 700;
  
-        // Constructs a BufferedImage of one of the predefined image types.
-        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
- 
-        // Create a graphics which can be used to draw into the buffered image
-        Graphics2D g2d = bufferedImage.createGraphics();
- 
-        // fill all the image with white
-        g2d.setColor(Color.CYAN);
+        // Create a white canvas
+        BufferedImage canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = canvas.createGraphics();
+        g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, width, height);
- 
-        // create a circle with black
-        //g2d.setColor(Color.black);
-        //g2d.fillOval(0, 0, width, height);
- 
-        // create a string with yellow
-        g2d.setColor(Color.BLACK);
-        
-        int altura = 10; 
-        if(deck.HasCompanion()){
-            g2d.drawString("Companhero: " + deck.getCompanion().getName(), 0, altura);
-            altura = altura + 10;
-        }
-        
-        altura = altura + 10;   
-        for (int i = 0; i < deck.getMainDeck().size(); i++) {
-            g2d.drawString(deck.getMainDeck().get(i).getName(), 0, altura);
-            altura = altura + 10;
-        }
-        
-        if(deck.HasSideBoard()) { 
-            altura = altura + 10;
-            g2d.drawString("SideBoard:", 0, altura);
-            altura = altura + 10;
-            for (int i = 0; i < deck.getSideBoard().size(); i++) {
-                g2d.drawString(deck.getSideBoard().get(i).getName(), 0, altura);
-                altura = altura + 10;
+
+        int x = 0;
+        int y = 0;
+        int cardsByLine = 0;
+        for (com.jnizer.mtgvisuallist.resource.Card card : deck.getMainDeck()) {
+            if(cardsByLine > 7) {
+                y = y + 215;
+                x = 0;
+                cardsByLine = 0;
+            } else { 
+                cardsByLine++;
             }
+            BufferedImage img = ImageIO.read(new URL(card.getImageUri()));
+            g2d.drawImage(img, x, y, null);
+            x = x + 150;
         }
- 
-        // Disposes of this graphics context and releases any system resources that it is using. 
+        
         g2d.dispose();
- 
-        // Save as PNG
         File file = new File("images-api/myimage.png");
-        ImageIO.write(bufferedImage, "png", file);        
-  
-        return file;
-    }
-    private static String createHTML(Deck deck) {
-        String html = 
-"<!DOCTYPE html>\n" +
-"<html>\n" +
-"<body>\n" +
-"  <div>\n" +
-"    <div style=\"background: red; width: 1800px;\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"      <img src=\"https://cdn1.mtggoldfish.com/images/gf/Bonecrusher%2BGiant%2B%255BELD%255D.jpg\">\n" +
-"    </div>\n" +
-"  </div>\n" +
-"</body>\n" +
-"</html>";
-        return html;
-    }
-    public static File htmlToImage(Deck deck) {
-        HtmlImageGenerator hig = new HtmlImageGenerator();
-        hig.loadHtml(createHTML(deck));
-        String path = "images-api\\test.png";
-        try {
-            hig.saveAsImage(new File(path));
-            Thread.sleep(20000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ImageManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        File file = new File(path);
+        ImageIO.write(canvas, "png", file);        
         return file;
     }
     public static File getCardImage(String cardName) throws IOException {
@@ -190,4 +125,5 @@ public class ImageManager {
         is.close();
         os.close();
     } 
+    
 }
